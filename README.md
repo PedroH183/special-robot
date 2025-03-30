@@ -15,8 +15,8 @@ Ele fornece diversas funcionalidades que facilitam o desenvolvimento de APIs o q
 
 ## 4. Arquiteturas para Projetos com DRF  
    - MVT [Padrão]
-   - Arquitetura Hexagonal [OK] 
-   - Arquitetura Limpa  [OK]
+   - Arquitetura Hexagonal [TODO] 
+   - Arquitetura Limpa  [TODO]
    - Domain-Driven Design (DDD) (testar)
 
 ## 7. Benchmark e Análise de Performance  
