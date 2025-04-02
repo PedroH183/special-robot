@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Aluno, Curso, Avaliacao
+from .models import Curso, Avaliacao
 
 @admin.register(Curso)
 class CursoAdmin(admin.ModelAdmin):
