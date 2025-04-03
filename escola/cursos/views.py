@@ -1,32 +1,39 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import generics
 from .models import Curso, Avaliacao
 from .serializers import CursoSerializer, AvaliacaoSerializer
 
 
-class CursoAPIView(APIView):
+class CursosAPIView(generics.ListCreateAPIView):
+    """
+    Views to Cursos Collection
+    """
 
-    def get(self, request):
-        cursos = Curso.objects.all()
-        serializer = CursoSerializer(cursos, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
 
-    def post(self, request):
-        serializer = CursoSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-        # return Response({"msg": "Criado com sucesso", status= ...})
 
-class AvaliacaoAPIView(APIView):
-    def get(self, request):
-        avaliacoes = Avaliacao.objects.all()
-        serializer = AvaliacaoSerializer(avaliacoes, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+class AvaliacoesApiView(generics.ListCreateAPIView):
+    """
+    Views to Avaliacoes Collection
+    """
 
-    def post(self, request):
-        serializer = AvaliacaoSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    queryset = Avaliacao.objects.all()
+    serializer_class = AvaliacaoSerializer
+
+
+class CursoAPIView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Views de individuos
+    """
+
+    queryset = Curso.objects.all()
+    serializer_class = CursoSerializer
+
+
+class AvaliacaoAPIView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Views de individuos
+    """
+
+    queryset = Avaliacao.objects.all()
+    serializer_class = AvaliacaoSerializer
